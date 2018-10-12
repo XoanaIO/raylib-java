@@ -1,12 +1,12 @@
 
-#Raylib-Java
+# Raylib-Java
 
 A thin (not yet ergonomic) Java Wrapper for [Raylib](https://github.com/raysan5/raylib).
 
 ---
 
-### Current Release:
-
+### Release Notes:
+#### 2018.10.11
 Raylib-Java is not yet production ready or battle hardened.  The current release, 2018.10, most closely matches a 0.0.1-alpha build.  It is available here only as proof that things are moving forward. 
 
 ### Download:
