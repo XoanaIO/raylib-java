@@ -57,4 +57,14 @@ public class BoundingBox {
     this(RaylibJNI.new_BoundingBox(), true);
   }
 
+  public BoundingBox(Vector3 min, Vector3 max) {
+    this();
+    this.setMax(max);
+    this.setMin(min);
+  }
+
+  public BoundingBox(float xMin, float yMin, float zMin, float xMax, float yMax, float zMax) {
+    this(new Vector3(xMin, yMin, zMin), new Vector3(xMax, yMax, zMax));
+  }
+
 }

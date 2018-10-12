@@ -63,4 +63,11 @@ public class Vector3 {
     this(RaylibJNI.new_Vector3(), true);
   }
 
+  public Vector3(float x, float y, float z) {
+    this();
+    this.setX(x);
+    this.setY(y);
+    this.setZ(z);
+  }
+
 }

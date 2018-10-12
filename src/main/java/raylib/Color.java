@@ -71,4 +71,16 @@ public class Color {
     this(RaylibJNI.new_Color(), true);
   }
 
+  public Color(int r, int g, int b, int a) {
+    this();
+    this.setR((short)r);
+    this.setG((short)g);
+    this.setB((short)b);
+    this.setA((short)a);
+  }
+
+  public Color(int r, int g, int b) {
+    this(r, g, b, 255);
+  }
+
 }

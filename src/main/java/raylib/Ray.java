@@ -57,4 +57,10 @@ public class Ray {
     this(RaylibJNI.new_Ray(), true);
   }
 
+  public Ray(Vector3 position, Vector3 direction) {
+    this();
+    this.setPosition(position);
+    this.setDirection(direction);
+  }
+
 }
