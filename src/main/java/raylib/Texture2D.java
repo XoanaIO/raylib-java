@@ -79,4 +79,14 @@ public class Texture2D {
     this(RaylibJNI.new_Texture2D(), true);
   }
 
+  public static final int FILTER_MODE_POINT = 0;
+  public static final int FILTER_MODE_BILINEAR = 1;
+  public static final int FILTER_MODE_TRILINEAR = 2;
+  public static final int FILTER_MODE_ANISOTROPIC_4X = 3;
+  public static final int FILTER_MODE_ANISOTROPIC_8X = 4;
+  public static final int FILTER_MODE_ANISOTROPIC_16X = 5;
+
+  public static final int WRAP_MODE_REPEAT = 0;
+  public static final int WRAP_MODE_CLAMP = 1;
+  public static final int WRAP_MODE_MIRROR = 2;
 }

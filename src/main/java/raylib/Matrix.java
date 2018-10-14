@@ -12,6 +12,13 @@ public class Matrix {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
 
+  /* Struct Layout: 0-16 in order = column major.
+  float m0, m4, m8, m12;
+  float m1, m5, m9, m13;
+  float m2, m6, m10, m14;
+  float m3, m7, m11, m15;
+  */
+
   protected Matrix(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
@@ -167,4 +174,56 @@ public class Matrix {
     this(RaylibJNI.new_Matrix(), true);
   }
 
+  public void resetToIdentity() {
+    setRowMajor(new float[]{
+      1, 0, 0, 0,
+      0, 1, 0, 0,
+      0, 0, 1, 0,
+      0, 0, 0, 1
+    });
+  }
+
+  public void setRowMajor(float[] value) {
+    setM0(value[0]);
+    setM1(value[4]);
+    setM2(value[8]);
+    setM3(value[12]);
+
+    setM4(value[1]);
+    setM5(value[5]);
+    setM6(value[9]);
+    setM7(value[13]);
+
+    setM8(value[2]);
+    setM9(value[6]);
+    setM10(value[10]);
+    setM11(value[14]);
+
+    setM12(value[3]);
+    setM13(value[7]);
+    setM14(value[11]);
+    setM15(value[15]);
+  }
+
+  public void setColumnMajor(float[] value) {
+    setM0(value[0]);
+    setM1(value[1]);
+    setM2(value[2]);
+    setM3(value[3]);
+
+    setM4(value[4]);
+    setM5(value[5]);
+    setM6(value[6]);
+    setM7(value[7]);
+
+    setM8(value[8]);
+    setM9(value[9]);
+    setM10(value[10]);
+    setM11(value[11]);
+
+    setM12(value[12]);
+    setM13(value[13]);
+    setM14(value[14]);
+    setM15(value[15]);
+  }
 }
