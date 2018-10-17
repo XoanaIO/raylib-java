@@ -42,7 +42,7 @@ dependencies {
 - [ ] Automatically load for all native platforms. (Usability)
 - [ ] Javadoc/Inline doc for IDE completion. (Usability)
 - [ ] Helper methods on vectors like sum/product. (Usability)  
-- [ ] Extra methods on Material to get/set specific map types. (Usability)
+- [x] Extra methods on Material to get/set specific map types. (Usability)
 - [ ] Update LoadFontEx so that String is properly converted to an int array of Unicode points. (Usability)
 - [ ] A method that will first search for files on-drive, then check JAR resources. (Usability)
 

@@ -71,4 +71,11 @@ public class Vector4 {
     this(RaylibJNI.new_Vector4(), true);
   }
 
+  public Vector4(float x, float y, float z, float w) {
+    this();
+    this.setX(x);
+    this.setY(y);
+    this.setZ(z);
+    this.setW(w);
+  }
 }

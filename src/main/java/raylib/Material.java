@@ -94,7 +94,63 @@ public class Material {
   public void setDiffuseMap(MaterialMap map) {
     setMap(MAP_DIFFUSE, map);
   }
+  
+  public MaterialMap getSpecularMap() {
+    return getMap(MAP_SPECULAR);
+  }
+  
+  public void setSpecularMap(MaterialMap map) {
+    setMap(MAP_SPECULAR, map);
+  }
 
+  public MaterialMap getMetalnessMap() {
+    return getMap(MAP_METALNESS);
+  }
+
+  public void setMetalnessMap(MaterialMap map) {
+    setMap(MAP_METALNESS, map);
+  }
+
+  public MaterialMap getNormalMap() {
+    return getMap(MAP_NORMAL);
+  }
+
+  public void setNormalMap(MaterialMap map) {
+    setMap(MAP_NORMAL, map);
+  }
+
+  public MaterialMap getRoughnessMap() {
+    return getMap(MAP_ROUGHNESS);
+  }
+
+  public void setRoughnessMap(MaterialMap map) {
+    setMap(MAP_ROUGHNESS, map);
+  }
+
+  public MaterialMap getOcclusionMap() {
+    return getMap(MAP_OCCLUSION);
+  }
+
+  public void setOcclusionMap(MaterialMap map) {
+    setMap(MAP_OCCLUSION, map);
+  }
+
+  public MaterialMap getEmissionMap() {
+    return getMap(MAP_EMISSION);
+  }
+
+  public void setEmissionMap(MaterialMap map) {
+    setMap(MAP_EMISSION, map);
+  }
+
+  public MaterialMap getHeightMap() {
+    return getMap(MAP_ROUGHNESS);
+  }
+
+  public void setHeightMap(MaterialMap map) {
+    setMap(MAP_HEIGHT, map);
+  }
+  
   public static final int MAP_DIFFUSE = 0;
   public static final int MAP_ALBEDO = 0;       // MAP_DIFFUSE
   public static final int MAP_SPECULAR = 1;
