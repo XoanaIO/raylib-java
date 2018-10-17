@@ -71,4 +71,20 @@ public class Rectangle {
     this(RaylibJNI.new_Rectangle(), true);
   }
 
+  public Rectangle(float x, float y, float width, float height) {
+    this();
+    setX(x);
+    setY(y);
+    setWidth(width);
+    setHeight(height);
+  }
+
+  public Rectangle(Vector2 min, Vector2 max) {
+    this();
+    setX(min.getX());
+    setY(min.getY());
+    setWidth(max.getX()-min.getX());
+    setHeight(max.getY()-min.getY());
+  }
+
 }

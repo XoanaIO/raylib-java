@@ -8,6 +8,8 @@
 
 package raylib;
 
+import static raylib.RaylibConstants.NATIVE_INT_SIZE;
+
 public class Shader {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
@@ -43,12 +45,12 @@ public class Shader {
     return RaylibJNI.Shader_id_get(swigCPtr, this);
   }
 
-  public void setLocs(SWIGTYPE_p_int value) {
-    RaylibJNI.Shader_locs_set(swigCPtr, this, SWIGTYPE_p_int.getCPtr(value));
+  public void setLoc(int index, SWIGTYPE_p_int value) {
+    RaylibJNI.Shader_locs_set(swigCPtr + (NATIVE_INT_SIZE*index), this, SWIGTYPE_p_int.getCPtr(value));
   }
 
-  public SWIGTYPE_p_int getLocs() {
-    long cPtr = RaylibJNI.Shader_locs_get(swigCPtr, this);
+  public SWIGTYPE_p_int getLoc(int index) {
+    long cPtr = RaylibJNI.Shader_locs_get(swigCPtr + (NATIVE_INT_SIZE*index), this);
     return (cPtr == 0) ? null : new SWIGTYPE_p_int(cPtr, false);
   }
 

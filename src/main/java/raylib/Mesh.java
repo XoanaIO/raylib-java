@@ -8,6 +8,8 @@
 
 package raylib;
 
+import static raylib.RaylibConstants.NATIVE_INT_SIZE;
+
 public class Mesh {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
@@ -122,12 +124,13 @@ public class Mesh {
     return RaylibJNI.Mesh_vaoId_get(swigCPtr, this);
   }
 
-  public void setVboId(SWIGTYPE_p_unsigned_int value) {
-    RaylibJNI.Mesh_vboId_set(swigCPtr, this, SWIGTYPE_p_unsigned_int.getCPtr(value));
+  public void setVboId(int index, int value) {
+    //RaylibJNI.Mesh_vboId_set(swigCPtr, this, SWIGTYPE_p_unsigned_int.getCPtr(value));
+    RaylibJNI.Mesh_vboId_set(swigCPtr + (index*NATIVE_INT_SIZE), this, value);
   }
 
-  public SWIGTYPE_p_unsigned_int getVboId() {
-    long cPtr = RaylibJNI.Mesh_vboId_get(swigCPtr, this);
+  public SWIGTYPE_p_unsigned_int getVboId(int index) {
+    long cPtr = RaylibJNI.Mesh_vboId_get(swigCPtr + (index*NATIVE_INT_SIZE), this);
     return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_int(cPtr, false);
   }
 

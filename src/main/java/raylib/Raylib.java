@@ -792,8 +792,10 @@ public class Raylib implements RaylibConstants {
     return new Font(RaylibJNI.LoadFont(fileName), true);
   }
 
-  public static Font LoadFontEx(String fileName, int fontSize, int charsCount, SWIGTYPE_p_int fontChars) {
-    return new Font(RaylibJNI.LoadFontEx(fileName, fontSize, charsCount, SWIGTYPE_p_int.getCPtr(fontChars)), true);
+  public static Font LoadFontEx(String fileName, int fontSize, int charsCount, String fontChars) {
+    // TODO: Convert each character in fontChars to a unicode code point of size int, then pass an array of ints.
+    long fontCharsPtr = 0;
+    return new Font(RaylibJNI.LoadFontEx(fileName, fontSize, charsCount, fontCharsPtr), true);
   }
 
   public static CharInfo LoadFontData(String fileName, int fontSize, SWIGTYPE_p_int fontChars, int charsCount, boolean sdf) {

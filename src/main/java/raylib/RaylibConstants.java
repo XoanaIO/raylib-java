@@ -9,6 +9,8 @@
 package raylib;
 
 public interface RaylibConstants {
+  public final static int NATIVE_INT_SIZE = 4;
+  public final static int NATIVE_FLOAT_SIZE = 4;
   public final static double PI = RaylibJNI.PI_get();
   public final static double DEG2RAD = RaylibJNI.DEG2RAD_get();
   public final static double RAD2DEG = RaylibJNI.RAD2DEG_get();

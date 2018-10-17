@@ -8,6 +8,9 @@
 
 package raylib;
 
+import static raylib.RaylibConstants.NATIVE_FLOAT_SIZE;
+import static raylib.RaylibConstants.NATIVE_INT_SIZE;
+
 public class Material {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
@@ -53,6 +56,24 @@ public class Material {
     return (cPtr == 0) ? null : new MaterialMap(cPtr, false);
   }
 
+  public MaterialMap getMap(int i) {
+    // i * sizeof(MaterialMap)
+    // TODO: Add this as a directive in SWIG.  sizeof(MaterialMap) = sizeof(texture) + sizeof(Color) + sizeof(float)
+    if(i < 0 || i > RaylibJNI.MAX_MATERIAL_MAPS_get()) {
+      return null;
+    }
+    long cPtr = RaylibJNI.Material_maps_get(swigCPtr + (i*((5*NATIVE_INT_SIZE)+NATIVE_INT_SIZE+NATIVE_FLOAT_SIZE)), this);
+    return (cPtr == 0) ? null : new MaterialMap(cPtr, false);
+  }
+
+  public void setMap(int i, MaterialMap value) {
+    if(i < 0 || i > RaylibJNI.MAX_MATERIAL_MAPS_get()) {
+      throw new IndexOutOfBoundsException("Index " + i + " was out of bounds for the range 0 to " + RaylibJNI.MAX_MATERIAL_MAPS_get());
+    }
+    long cPtr = RaylibJNI.Material_maps_get(swigCPtr + (i*((5*4)+4+4)), this);
+    RaylibJNI.Material_maps_set(cPtr, this, MaterialMap.getCPtr(value), value);
+  }
+
   public void setParams(SWIGTYPE_p_float value) {
     RaylibJNI.Material_params_set(swigCPtr, this, SWIGTYPE_p_float.getCPtr(value));
   }
@@ -65,5 +86,83 @@ public class Material {
   public Material() {
     this(RaylibJNI.new_Material(), true);
   }
+
+  public MaterialMap getDiffuseMap() {
+    return getMap(MAP_DIFFUSE);
+  }
+
+  public void setDiffuseMap(MaterialMap map) {
+    setMap(MAP_DIFFUSE, map);
+  }
+  
+  public MaterialMap getSpecularMap() {
+    return getMap(MAP_SPECULAR);
+  }
+  
+  public void setSpecularMap(MaterialMap map) {
+    setMap(MAP_SPECULAR, map);
+  }
+
+  public MaterialMap getMetalnessMap() {
+    return getMap(MAP_METALNESS);
+  }
+
+  public void setMetalnessMap(MaterialMap map) {
+    setMap(MAP_METALNESS, map);
+  }
+
+  public MaterialMap getNormalMap() {
+    return getMap(MAP_NORMAL);
+  }
+
+  public void setNormalMap(MaterialMap map) {
+    setMap(MAP_NORMAL, map);
+  }
+
+  public MaterialMap getRoughnessMap() {
+    return getMap(MAP_ROUGHNESS);
+  }
+
+  public void setRoughnessMap(MaterialMap map) {
+    setMap(MAP_ROUGHNESS, map);
+  }
+
+  public MaterialMap getOcclusionMap() {
+    return getMap(MAP_OCCLUSION);
+  }
+
+  public void setOcclusionMap(MaterialMap map) {
+    setMap(MAP_OCCLUSION, map);
+  }
+
+  public MaterialMap getEmissionMap() {
+    return getMap(MAP_EMISSION);
+  }
+
+  public void setEmissionMap(MaterialMap map) {
+    setMap(MAP_EMISSION, map);
+  }
+
+  public MaterialMap getHeightMap() {
+    return getMap(MAP_ROUGHNESS);
+  }
+
+  public void setHeightMap(MaterialMap map) {
+    setMap(MAP_HEIGHT, map);
+  }
+  
+  public static final int MAP_DIFFUSE = 0;
+  public static final int MAP_ALBEDO = 0;       // MAP_DIFFUSE
+  public static final int MAP_SPECULAR = 1;
+  public static final int MAP_METALNESS = 1;       // MAP_SPECULAR
+  public static final int MAP_NORMAL = 2;
+  public static final int MAP_ROUGHNESS = 3;
+  public static final int MAP_OCCLUSION = 4;
+  public static final int MAP_EMISSION = 5;
+  public static final int MAP_HEIGHT = 6;
+  public static final int MAP_CUBEMAP = 7; // NOTE: Uses GL_TEXTURE_CUBE_MAP
+  public static final int MAP_IRRADIANCE = 8;          // NOTE: Uses GL_TEXTURE_CUBE_MAP
+  public static final int MAP_PREFILTER = 9;           // NOTE: Uses GL_TEXTURE_CUBE_MAP
+  public static final int MAP_BRDF = 10;
 
 }
