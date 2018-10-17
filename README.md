@@ -6,6 +6,10 @@ A thin (not yet ergonomic) Java Wrapper for [Raylib](https://github.com/raysan5/
 ---
 
 ### Release Notes:
+
+#### 2018.10.17
+Important bugfix: the DLL wasn't being copied correctly from the package to a temporary directory.  There were bytes left in the buffer at the tail end which caused crashes.  Also make an effort to clean up the temporary files after the application quits.
+
 #### 2018.10.11
 Raylib-Java is not yet production ready or battle hardened.  The current release, 2018.10, most closely matches a 0.0.1-alpha build.  It is available here only as proof that things are moving forward. 
 
@@ -29,7 +33,7 @@ repositories {
 }
 
 dependencies {
-   compile name: 'raylib-java-xxxx.xx' // Note that this does not end in .jar!
+   compile name: 'raylib-xxxx.xx-platform' // Note that this does not end in .jar!
 }
 ``` 
 
