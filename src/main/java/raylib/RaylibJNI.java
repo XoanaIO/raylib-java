@@ -33,7 +33,9 @@ public class RaylibJNI {
       FileOutputStream fout = new FileOutputStream(temp);
       int bytesRead = -1;
       while((bytesRead = fin.read(buffer)) != -1) {
-        fout.write(buffer);
+        for(int i=0; i < bytesRead; i++) {
+          fout.write(buffer[i]);
+        }
       }
       fout.close();
       fin.close();
@@ -57,6 +59,7 @@ public class RaylibJNI {
     // Invoke loader.
     System.out.println("Trying to load raylib from " + loadPath + " with name " + loadName);
     System.load(temp.getAbsolutePath());
+    temp.deleteOnExit();
   }
   public final static native double PI_get();
   public final static native double DEG2RAD_get();

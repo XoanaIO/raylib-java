@@ -55,4 +55,10 @@ public class Vector2 {
     this(RaylibJNI.new_Vector2(), true);
   }
 
+  public Vector2(float x, float y) {
+    this();
+    this.setX(x);
+    this.setY(y);
+  }
+
 }
