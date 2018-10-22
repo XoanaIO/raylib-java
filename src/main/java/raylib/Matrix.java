@@ -174,13 +174,60 @@ public class Matrix {
     this(RaylibJNI.new_Matrix(), true);
   }
 
-  public void resetToIdentity() {
+  public void setToIdentity() {
     setRowMajor(new float[]{
       1, 0, 0, 0,
       0, 1, 0, 0,
       0, 0, 1, 0,
       0, 0, 0, 1
     });
+  }
+
+  // TODO: This is really messy.  See about getting a contiguous array working with JNI.
+  // TODO: Add algebraic operators and the ability to set/get specific places.
+
+  public void setColumns(Vector4 c0, Vector4 c1, Vector4 c2, Vector4 c3) {
+    setM0(c0.getX());
+    setM1(c0.getY());
+    setM2(c0.getZ());
+    setM3(c0.getW());
+
+    setM4(c1.getX());
+    setM5(c1.getY());
+    setM6(c1.getZ());
+    setM7(c1.getW());
+
+    setM8(c2.getX());
+    setM9(c2.getY());
+    setM10(c2.getZ());
+    setM11(c2.getW());
+
+    setM12(c3.getX());
+    setM13(c3.getY());
+    setM14(c3.getZ());
+    setM15(c3.getW());
+  }
+
+  public void setRows(Vector4 r0, Vector4 r1, Vector4 r2, Vector4 r3) {
+    setM0(r0.getX());
+    setM4(r0.getY());
+    setM8(r0.getZ());
+    setM12(r0.getW());
+
+    setM1(r1.getX());
+    setM5(r1.getY());
+    setM9(r1.getZ());
+    setM13(r1.getW());
+
+    setM2(r2.getX());
+    setM6(r2.getY());
+    setM10(r2.getZ());
+    setM14(r2.getW());
+
+    setM3(r3.getX());
+    setM7(r3.getY());
+    setM11(r3.getZ());
+    setM15(r3.getW());
   }
 
   public void setRowMajor(float[] value) {

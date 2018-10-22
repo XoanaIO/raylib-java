@@ -61,4 +61,57 @@ public class Vector2 {
     this.setY(y);
   }
 
+  public void add_i(Vector2 other) {
+    this.setX(this.getX()+other.getX());
+    this.setY(this.getY()+other.getY());
+  }
+
+  public void add_i(float other) {
+    this.setX(this.getX()+other);
+    this.setY(this.getY()+other);
+  }
+
+  public void multiply_i(Vector2 other) {
+    this.setX(this.getX()*other.getX());
+    this.setY(this.getY()*other.getY());
+  }
+
+  public void multiply_i(float other) {
+    this.setX(this.getX()*other);
+    this.setY(this.getY()*other);
+  }
+
+  public void subtract_i(Vector2 other) {
+    this.setX(this.getX()-other.getX());
+    this.setY(this.getY()-other.getY());
+  }
+
+  public void subtract_i(float other) {
+    this.setX(this.getX()-other);
+    this.setY(this.getY()-other);
+  }
+
+  public Vector2 add(Vector2 other) {
+    return new Vector2(this.getX()+other.getX(), this.getY()+other.getY());
+  }
+
+  public Vector2 add(float other) {
+    return new Vector2(this.getX()+other, this.getY()+other);
+  }
+
+  public Vector2 multiply(Vector2 other) {
+    return new Vector2(this.getX()*other.getX(), this.getY()*other.getY());
+  }
+
+  public Vector2 multiply(float other) {
+    return new Vector2(this.getX()*other, this.getY()*other);
+  }
+
+  public Vector2 subtract(Vector2 other) {
+    return new Vector2(this.getX()-other.getX(), this.getY()-other.getY());
+  }
+
+  public Vector2 subtract(float other) {
+    return new Vector2(this.getX()-other, this.getY()-other);
+  }
 }

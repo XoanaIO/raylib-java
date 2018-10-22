@@ -8,6 +8,9 @@
 
 package raylib;
 
+import static java.lang.Math.acos;
+import static java.lang.Math.sqrt;
+
 public class Vector4 {
   private transient long swigCPtr;
   protected transient boolean swigCMemOwn;
@@ -77,5 +80,123 @@ public class Vector4 {
     this.setY(y);
     this.setZ(z);
     this.setW(w);
+  }
+
+  public void add_i(Vector4 other) {
+    this.setX(this.getX()+other.getX());
+    this.setY(this.getY()+other.getY());
+    this.setZ(this.getZ()+other.getZ());
+    this.setW(this.getW()+other.getW());
+  }
+
+  public void add_i(float other) {
+    this.setX(this.getX()+other);
+    this.setY(this.getY()+other);
+    this.setZ(this.getZ()+other);
+    this.setW(this.getW()+other);
+  }
+
+  public void multiply_i(Vector4 other) {
+    this.setX(this.getX()*other.getX());
+    this.setY(this.getY()*other.getY());
+    this.setZ(this.getZ()*other.getZ());
+    this.setW(this.getW()*other.getW());
+  }
+
+  public void multiply_i(float other) {
+    this.setX(this.getX()*other);
+    this.setY(this.getY()*other);
+    this.setZ(this.getZ()*other);
+    this.setW(this.getW()*other);
+  }
+
+  public void subtract_i(Vector4 other) {
+    this.setX(this.getX()-other.getX());
+    this.setY(this.getY()-other.getY());
+    this.setZ(this.getZ()-other.getZ());
+    this.setW(this.getW()-other.getW());
+  }
+
+  public void subtract_i(float other) {
+    this.setX(this.getX()-other);
+    this.setY(this.getY()-other);
+    this.setZ(this.getZ()-other);
+    this.setW(this.getW()-other);
+  }
+
+  public Vector4 add(Vector4 other) {
+    return new Vector4(
+            this.getX()+other.getX(),
+            this.getY()+other.getY(),
+            this.getZ()+other.getZ(),
+            this.getW()+other.getW()
+    );
+  }
+
+  public Vector4 add(float other) {
+    return new Vector4(
+            this.getX()+other,
+            this.getY()+other,
+            this.getZ()+other,
+            this.getW()+other);
+  }
+
+  public Vector4 multiply(Vector4 other) {
+    return new Vector4(
+            this.getX()*other.getX(),
+            this.getY()*other.getY(),
+            this.getZ()*other.getZ(),
+            this.getW()*other.getW());
+  }
+
+  public Vector4 multiply(float other) {
+    return new Vector4(
+            this.getX()*other,
+            this.getY()*other,
+            this.getZ()*other,
+            this.getW()*other);
+  }
+
+  public Vector4 subtract(Vector4 other) {
+    return new Vector4(
+            this.getX()-other.getX(),
+            this.getY()-other.getY(),
+            this.getZ()-other.getZ(),
+            this.getW()-other.getW());
+  }
+
+  public Vector4 subtract(float other) {
+    return new Vector4(
+            this.getX()-other,
+            this.getY()-other,
+            this.getZ()-other,
+            this.getW()-other);
+  }
+
+  /// Treat this Vector4 as a quaternion and extract the angle.
+  public float getAngle() {
+    return 2f * (float)acos(this.getW());
+  }
+
+  /// Treat this Vector4 as a quaternion and extract the axis.
+  public Vector3 getAxis(float angle) {
+    /*
+      angle = 2 * acos(qw)
+      x = qx / sqrt(1-qw*qw)
+      y = qy / sqrt(1-qw*qw)
+      z = qz / sqrt(1-qw*qw)
+      if(qw ~ 0) -> then x,y,z = qx,qy,qz.
+     */
+    float root = (float)sqrt(1f - getW()*getW());
+    if(root < 0.0001f) {
+      root = 1f;
+    }
+    float invRoot = 1.0f/root;
+    return new Vector3(getX()*invRoot, getY()*invRoot, getZ()*invRoot);
+  }
+
+  /// Treat this Vector4 as a quaternion and extract the axis.
+  public Vector3 getAxis() {
+    return getAxis(getAngle());
   }
 }

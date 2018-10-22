@@ -70,4 +70,82 @@ public class Vector3 {
     this.setZ(z);
   }
 
+  public void add_i(Vector3 other) {
+    this.setX(this.getX()+other.getX());
+    this.setY(this.getY()+other.getY());
+    this.setZ(this.getZ()+other.getZ());
+  }
+
+  public void add_i(float other) {
+    this.setX(this.getX()+other);
+    this.setY(this.getY()+other);
+    this.setZ(this.getZ()+other);
+  }
+
+  public void multiply_i(Vector3 other) {
+    this.setX(this.getX()*other.getX());
+    this.setY(this.getY()*other.getY());
+    this.setZ(this.getZ()*other.getZ());
+  }
+
+  public void multiply_i(float other) {
+    this.setX(this.getX()*other);
+    this.setY(this.getY()*other);
+    this.setZ(this.getZ()*other);
+  }
+
+  public void subtract_i(Vector3 other) {
+    this.setX(this.getX()-other.getX());
+    this.setY(this.getY()-other.getY());
+    this.setZ(this.getZ()-other.getZ());
+  }
+
+  public void subtract_i(float other) {
+    this.setX(this.getX()-other);
+    this.setY(this.getY()-other);
+    this.setZ(this.getZ()-other);
+  }
+
+  public Vector3 add(Vector3 other) {
+    return new Vector3(
+            this.getX()+other.getX(),
+            this.getY()+other.getY(),
+            this.getZ()+other.getZ()
+    );
+  }
+
+  public Vector3 add(float other) {
+    return new Vector3(
+            this.getX()+other,
+            this.getY()+other,
+            this.getZ()+other);
+  }
+
+  public Vector3 multiply(Vector3 other) {
+    return new Vector3(
+            this.getX()*other.getX(),
+            this.getY()*other.getY(),
+            this.getZ()*other.getZ());
+  }
+
+  public Vector3 multiply(float other) {
+    return new Vector3(
+            this.getX()*other,
+            this.getY()*other,
+            this.getZ()*other);
+  }
+
+  public Vector3 subtract(Vector3 other) {
+    return new Vector3(
+            this.getX()-other.getX(),
+            this.getY()-other.getY(),
+            this.getZ()-other.getZ());
+  }
+
+  public Vector3 subtract(float other) {
+    return new Vector3(
+            this.getX()-other,
+            this.getY()-other,
+            this.getZ()-other);
+  }
 }
